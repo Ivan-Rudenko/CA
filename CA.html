@@ -91,16 +91,16 @@
     .small{font-size:13px;color:var(--muted)}
     .pill{background:rgba(255,255,255,0.03);padding:6px 8px;border-radius:999px;font-size:13px}
     code{background:rgba(255,255,255,0.02);padding:4px 6px;border-radius:6px;color:var(--muted)}
-        /* Не выходит за границы страницы */
+       
     .wrap {
-    max-width: 1000px; /* выбери 900–1100 по вкусу */
+    max-width: 1000px;
     width: 100%;
     margin: 0 auto;
     padding: 24px;
     overflow-x: hidden;
     }
 
-    /* Галерея и карточки адаптивные */
+   
     .grid {
     width: 100%;
     overflow: hidden;
@@ -114,7 +114,7 @@
     border-radius: 8px;
     }
 
-    /* На телефоне — одна колонка */
+  
     @media (max-width: 600px) {
     .grid {
         grid-template-columns: 1fr !important;
@@ -128,7 +128,7 @@
     }
 
     .hero img {
-      display: none; /* скрываем случайную картинку, которая ломала верстку */
+      display: none;
     }
     .media video {
      width: 100%;
@@ -143,7 +143,7 @@
   <div class="wrap">
     <header>
       <div class="brand">
-        <!-- if no logo.png, the <img> will fail gracefully. Replace with your logo file named logo.png -->
+        
         <img src="logo.jpg" alt="Logo" onerror="this.style.display='none'">
         <div>
           <div class="title">Ivan Rudenko — Visual Studio</div>
@@ -211,7 +211,7 @@
             </div>
           </div>
 
-          <!-- two more user slots -->
+          
           <div class="card">
             <div id="slot1" class="placeholder"><img id="slot1" src="photoshop.jpg" alt="User image"><br><span class="small"></span></div>
             <div style="margin-top:8px" class="file-row">
@@ -324,17 +324,17 @@
   </div>
 
   <script>
-    // helper: scroll to section
+    
     function scrollToSection(id){
       document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});
     }
 
-    // preview uploaded logo
+    
     function previewLogo(e){
       const f = e.target.files[0];
       if(!f) return;
       const url = URL.createObjectURL(f);
-      // replace or create <img> in brand
+     
       let img = document.querySelector('.brand img');
       if(!img){
         img = document.createElement('img');
@@ -344,18 +344,18 @@
       img.alt = 'Logo preview';
     }
 
-    // preview image in gallery slots
+   
     function previewImage(e, targetId){
       const f = e.target.files[0];
       if(!f) return;
       const url = URL.createObjectURL(f);
       const el = document.getElementById(targetId);
 
-      // if element is <img> replace src, otherwise create new <img>
+     
       if(el.tagName === 'IMG'){
         el.src = url;
       } else {
-        // replace placeholder div with an <img>
+       
         const parent = el.parentElement;
         const img = document.createElement('img');
         img.src = url;
@@ -368,7 +368,7 @@
     function clearSlot(id){
       const el = document.getElementById(id);
       if(!el) return;
-      // replace image or div with placeholder
+   
       const parent = el.parentElement;
       const placeholder = document.createElement('div');
       placeholder.id = id;
@@ -377,7 +377,7 @@
       parent.replaceChild(placeholder, el);
     }
 
-    // download currently displayed main image
+  
     function downloadCurrent(imgId){
       const img = document.getElementById(imgId);
       if(!img || !img.src) return alert('No image to download.');
@@ -391,4 +391,5 @@
   </script>
 </body>
 </html>
+
 
